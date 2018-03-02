@@ -1,6 +1,6 @@
 _script()
 {
-    _script_commands=$(ls /home/nahuel/Documentos/plantillas/)
+    _script_commands=$(ls $dirTemp)
 
     local cur
     COMPREPLY=()

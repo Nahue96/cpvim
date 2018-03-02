@@ -1,17 +1,18 @@
 #!/bin/bash
-pDir=$(cat dir)
-if [ ! $# = 2 ]; then
-if [ -r $pDir$1 ]; then
-    if [ -e $pDir$1 ]; then
-        cp -v $pDir$1 $2
-        vim $2
-    else
-        echo "File does is not readable."
-    fi
+echo $pDir
+
+if [ $# = 2 ]; then
+	if [ -e $pDir$1 ]; then
+		if [ -r $pDir$1 ]; then
+			cp -v $pDir$1 $2
+			vim $2
+		else
+			echo "File does is not readable."
+		fi
+	else
+		echo "File does not exist in $pDir$1 ."
+		echo "You can try: $(ls $pDir)"
+	fi
 else
-    echo "File does not exist in $pDir ."
-    echo "You can try: $(ls $pDir)"
-fi
-else
-    echo "Se necesitan 2 argumentos"
+	echo "Se necesitan 2 argumentos"
 fi
